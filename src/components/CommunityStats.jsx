@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, TrendingUp, Users, School } from 'lucide-react';
+import { Sparkles, Users, School, ArrowUpRight } from 'lucide-react';
 import { formatINR } from '../utils/formatters';
 
 const RECENT_ACTIVITIES = [
@@ -12,7 +12,9 @@ const RECENT_ACTIVITIES = [
 
 export default function CommunityStats({ totalCommunityIncome = 842650 }) {
   const [activityIndex, setActivityIndex] = useState(0);
+  const [displayCount, setDisplayCount] = useState(0);
 
+  // Rotating activity ticker
   useEffect(() => {
     const timer = setInterval(() => {
       setActivityIndex((prev) => (prev + 1) % RECENT_ACTIVITIES.length);
@@ -20,31 +22,62 @@ export default function CommunityStats({ totalCommunityIncome = 842650 }) {
     return () => clearInterval(timer);
   }, []);
 
+  // Smooth number ticker counting up to totalCommunityIncome
+  useEffect(() => {
+    let start = Math.max(0, totalCommunityIncome - 40000);
+    const duration = 1200; // ms
+    const stepTime = 20;
+    const steps = duration / stepTime;
+    const increment = (totalCommunityIncome - start) / steps;
+    let current = start;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= totalCommunityIncome) {
+        setDisplayCount(totalCommunityIncome);
+        clearInterval(timer);
+      } else {
+        setDisplayCount(Math.round(current));
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [totalCommunityIncome]);
+
   return (
     <div className="community-banner">
       <div className="community-left">
-        <span className="community-label">Total Impact So Far</span>
-        <div className="community-amount">
-          <span className="highlight-gold">{formatINR(totalCommunityIncome)}</span>
+        <div className="community-label-row">
+          <span className="community-pulse-dot"></span>
+          <span className="community-label">Total Student Impact</span>
         </div>
-        <span style={{ fontSize: '0.82rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: '600' }}>
-          EARNED BY THE EYFI STUDENT COMMUNITY SO FAR
+        
+        <div className="community-amount">
+          <span className="community-amount-num">{formatINR(displayCount)}</span>
+        </div>
+        
+        <span className="community-subtext">
+          EARNED BY THE EYFI COLLEGE COMMUNITY SO FAR
         </span>
       </div>
 
       <div className="community-right">
         <div className="community-stat-item">
           <span className="stat-item-num">1,480+</span>
-          <span className="stat-item-label">Student Hustlers</span>
+          <span className="stat-item-label">Active Hustlers</span>
         </div>
+
+        <div className="community-stat-divider"></div>
 
         <div className="community-stat-item">
           <span className="stat-item-num">64</span>
           <span className="stat-item-label">Campuses</span>
         </div>
 
+        <div className="community-stat-divider"></div>
+
         <div className="live-activity-ticker">
-          <Sparkles size={16} color="#FFB703" />
+          <Sparkles size={15} color="#F97316" />
           <span>{RECENT_ACTIVITIES[activityIndex]}</span>
         </div>
       </div>

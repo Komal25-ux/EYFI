@@ -5,54 +5,57 @@
   --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'Space Grotesk', monospace;
 
-  /* Brand Palette */
-  --eyfi-brand: #FF4522;
-  --eyfi-brand-hover: #E63816;
-  --eyfi-brand-subtle: #FFF1EE;
-  --eyfi-brand-light: #FFE2DB;
-  
-  --eyfi-gold: #FFB703;
-  --eyfi-gold-subtle: #FFFBEA;
+  /* Brand Palette (Aligned with eyfichallenge.com & UI Guidelines) */
+  --eyfi-brand: #F97316;           /* Vibrant Orange (Primary Accent) */
+  --eyfi-brand-hover: #EA580C;
+  --eyfi-brand-subtle: #FFF7ED;    /* 5% tint wash */
+  --eyfi-brand-light: #FED7AA;
+
+  --eyfi-gold: #F59E0B;
+  --eyfi-gold-subtle: #FEF3C7;
   --eyfi-gold-dark: #D97706;
 
   --eyfi-silver: #94A3B8;
-  --eyfi-bronze: #B45309;
+  --eyfi-bronze: #C2410C;
 
-  --eyfi-green: #10B981;
+  --eyfi-green: #10B981;           /* Emerald Green for Money & Milestones */
   --eyfi-green-subtle: #ECFDF5;
-  --eyfi-red: #EF4444;
-  --eyfi-red-subtle: #FEF2F2;
+  --eyfi-red: #F43F5E;             /* Rose Red for Drops */
+  --eyfi-red-subtle: #FFF1F2;
+
+  --eyfi-blue: #2563EB;            /* Electric Blue */
+  --eyfi-blue-subtle: #EFF6FF;
 
   --eyfi-purple: #8B5CF6;
   --eyfi-purple-subtle: #F5F3FF;
 
-  /* Neutrals */
-  --bg-main: #FAF8F5;
-  --bg-card: #FFFFFF;
-  --bg-card-secondary: #F7F4EE;
-  --bg-subtle: #F1ECE3;
-  
-  --text-primary: #111317;
-  --text-secondary: #5A606D;
-  --text-muted: #8E95A5;
+  /* Base Light & Warm Neutrals */
+  --bg-main: #FAFAF9;              /* Warm Off-White (Primary Background) */
+  --bg-card: #FFFFFF;              /* Pure White Surface */
+  --bg-card-secondary: #F8FAFC;    /* Soft Slate Surface */
+  --bg-subtle: #F1F5F9;
+
+  --text-primary: #171717;         /* Deep Charcoal / Near Black */
+  --text-secondary: #64748B;       /* Muted Slate */
+  --text-muted: #94A3B8;
   --text-inverse: #FFFFFF;
 
-  --border-light: #EBE5DB;
-  --border-strong: #D9D2C5;
-  --border-focus: #FF4522;
+  --border-light: #E2E8F0;         /* Soft barely-there border */
+  --border-strong: #CBD5E1;
+  --border-focus: #F97316;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(17, 19, 23, 0.04);
-  --shadow-md: 0 4px 12px rgba(17, 19, 23, 0.06);
-  --shadow-lg: 0 12px 28px rgba(17, 19, 23, 0.08);
-  --shadow-xl: 0 20px 40px rgba(17, 19, 23, 0.12);
-  --shadow-brand: 0 8px 24px rgba(255, 69, 34, 0.25);
-  --shadow-gold: 0 8px 24px rgba(255, 183, 3, 0.3);
+  /* Soft Diffused Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.05), 0 4px 10px -2px rgba(0, 0, 0, 0.02);
+  --shadow-xl: 0 20px 35px -5px rgba(0, 0, 0, 0.06), 0 10px 15px -5px rgba(0, 0, 0, 0.03);
+  --shadow-brand: 0 8px 24px rgba(249, 115, 22, 0.22);
+  --shadow-journey: 0 12px 28px -4px rgba(249, 115, 22, 0.12), 0 4px 12px rgba(0, 0, 0, 0.03);
 
   --radius-sm: 8px;
   --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 }
 
@@ -69,8 +72,6 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(rgba(17, 19, 23, 0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
   min-height: 100vh;
 }
 
@@ -78,12 +79,46 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
 }
 
 .font-mono {
   font-family: var(--font-mono);
+}
+
+/* 1. Official EYFI Marquee Bar */
+.eyfi-top-marquee {
+  background: var(--eyfi-brand);
+  color: #000000;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--border-light);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 0;
+}
+
+.marquee-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-track span {
+  margin: 0 16px;
+}
+
+.marquee-track .marquee-white {
+  color: #FFFFFF;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Layout Utilities */
@@ -98,10 +133,10 @@ h1, h2, h3, h4, h5, h6 {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 248, 245, 0.92);
+  background: rgba(250, 250, 249, 0.94);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-light);
-  padding: 14px 0;
+  padding: 12px 0;
   margin-bottom: 24px;
 }
 
@@ -124,10 +159,10 @@ h1, h2, h3, h4, h5, h6 {
 .brand-badge-logo {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 2px;
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   letter-spacing: -0.04em;
   color: var(--text-primary);
   text-decoration: none;
@@ -141,15 +176,15 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--text-primary);
-  color: #FFF;
+  background: var(--eyfi-brand-subtle);
+  border: 1px solid var(--eyfi-brand-light);
+  color: var(--eyfi-brand);
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 800;
   font-family: var(--font-mono);
   padding: 5px 12px;
   border-radius: var(--radius-full);
   letter-spacing: 0.04em;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .live-dot {
@@ -163,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes pulse-live {
   0% { transform: scale(0.95); opacity: 0.8; }
-  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px var(--eyfi-brand); }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 10px var(--eyfi-brand); }
   100% { transform: scale(0.95); opacity: 0.8; }
 }
 
@@ -198,8 +233,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-user-avatar {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 2px solid var(--eyfi-brand);
   object-fit: cover;
@@ -208,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Section */
 .hero-section {
   text-align: center;
-  padding: 24px 0 18px;
+  padding: 24px 0 16px;
 }
 
 .hero-tagline-badge {
@@ -228,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.035em;
@@ -236,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title .gradient-text {
-  background: linear-gradient(135deg, #FF4522 0%, #FF8A00 100%);
+  background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -249,32 +284,22 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
 }
 
-/* Community Impact Banner */
+/* Community Impact Banner — Warm & Optimistic Light Card */
 .community-banner {
-  background: linear-gradient(135deg, #111317 0%, #1E222B 100%);
-  color: #FFFFFF;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  border-top: 4px solid var(--eyfi-brand);
   border-radius: var(--radius-lg);
-  padding: 22px 28px;
-  margin: 22px 0 32px;
+  padding: 24px 28px;
+  margin: 20px 0 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
-  box-shadow: 0 14px 32px rgba(17, 19, 23, 0.18);
+  box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
-}
-
-.community-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(255, 69, 34, 0.22) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .community-left {
@@ -283,33 +308,53 @@ h1, h2, h3, h4, h5, h6 {
   gap: 4px;
 }
 
+.community-label-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.community-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--eyfi-green);
+}
+
 .community-label {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.76rem;
+  font-weight: 800;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-secondary);
   text-transform: uppercase;
 }
 
 .community-amount {
   font-family: var(--font-mono);
-  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  font-size: clamp(2.2rem, 4.5vw, 3rem);
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--text-primary);
   letter-spacing: -0.03em;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.community-amount .highlight-gold {
-  color: var(--eyfi-gold);
+.community-amount-num {
+  color: var(--eyfi-brand);
+}
+
+.community-subtext {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 .community-right {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .community-stat-item {
@@ -321,22 +366,29 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--text-primary);
 }
 
 .stat-item-label {
   font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
+.community-stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-light);
+}
+
 .live-activity-ticker {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--eyfi-brand-subtle);
+  border: 1px solid var(--eyfi-brand-light);
   padding: 8px 14px;
   border-radius: var(--radius-md);
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  color: #9A3412;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -374,72 +426,62 @@ h1, h2, h3, h4, h5, h6 {
 
 .podium-card {
   background: var(--bg-card);
-  border: 2px solid var(--border-light);
+  border: 1.5px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 24px 18px 20px;
   text-align: center;
   position: relative;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
 }
 
 .podium-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Large centered emoji above avatar */
+.podium-medal-emoji {
+  font-size: 2.2rem;
+  line-height: 1;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+.podium-medal-emoji.gold {
+  font-size: 2.6rem;
+  animation: floatGold 3s ease-in-out infinite;
+}
+
+@keyframes floatGold {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 .podium-rank-1 {
-  border-color: #FBBF24;
+  border-color: #FDE68A;
   background: linear-gradient(180deg, #FFFDF8 0%, #FFFFFF 100%);
-  box-shadow: var(--shadow-gold);
+  box-shadow: 0 10px 28px -4px rgba(245, 158, 11, 0.15), var(--shadow-md);
   transform: translateY(-12px);
-  padding-top: 32px;
+  padding-top: 28px;
   padding-bottom: 28px;
 }
 
 .podium-rank-1:hover {
-  transform: translateY(-18px);
+  transform: translateY(-17px);
 }
 
 .podium-rank-2 {
-  border-color: #CBD5E1;
-  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+  border-color: #E2E8F0;
+  background: var(--bg-card);
 }
 
 .podium-rank-3 {
-  border-color: #FDBA74;
-  background: linear-gradient(180deg, #FFF7ED 0%, #FFFFFF 100%);
-}
-
-.podium-badge-icon {
-  position: absolute;
-  top: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  font-weight: 800;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.badge-gold {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  color: #FFF;
-}
-
-.badge-silver {
-  background: linear-gradient(135deg, #94A3B8 0%, #64748B 100%);
-  color: #FFF;
-}
-
-.badge-bronze {
-  background: linear-gradient(135deg, #F97316 0%, #C2410C 100%);
-  color: #FFF;
+  border-color: #FED7AA;
+  background: var(--bg-card);
 }
 
 .podium-avatar-wrapper {
@@ -467,8 +509,8 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   bottom: -4px;
   right: -6px;
-  background: #111317;
-  color: #FFB703;
+  background: var(--text-primary);
+  color: var(--eyfi-brand);
   font-size: 0.72rem;
   font-weight: 800;
   padding: 2px 7px;
@@ -515,11 +557,17 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   background: var(--bg-card-secondary);
   border: 1px solid var(--border-light);
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 3px 10px;
   border-radius: var(--radius-full);
+}
+
+.podium-category-tag.primary {
+  background: #FEF3C7;
+  color: #92400E;
+  border-color: #FDE68A;
 }
 
 /* Main Content Split: Leaderboard Table vs My Journey */
@@ -554,7 +602,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Scope Toggle (All India / My College) */
 .scope-toggle-group {
   display: inline-flex;
-  background: var(--bg-card-secondary);
+  background: var(--bg-subtle);
   padding: 4px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border-light);
@@ -579,14 +627,14 @@ h1, h2, h3, h4, h5, h6 {
 .scope-btn.active {
   background: var(--text-primary);
   color: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Time Filter Tabs */
 .time-filter-group {
   display: inline-flex;
   gap: 4px;
-  background: var(--bg-card-secondary);
+  background: var(--bg-subtle);
   padding: 4px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-light);
@@ -672,7 +720,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .search-input:focus {
   border-color: var(--eyfi-brand);
-  box-shadow: 0 0 0 3px rgba(255, 69, 34, 0.12);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
 }
 
 .search-icon {
@@ -739,7 +787,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   padding: 14px 20px;
   border-bottom: 1px solid var(--border-light);
-  transition: all 0.2s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
   cursor: pointer;
   position: relative;
 }
@@ -750,8 +798,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .leaderboard-row:hover {
   background: #FFFDF8;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(17, 19, 23, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
   z-index: 2;
 }
 
@@ -832,7 +880,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 6px;
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -879,12 +927,12 @@ h1, h2, h3, h4, h5, h6 {
 .movement-down {
   background: var(--eyfi-red-subtle);
   color: var(--eyfi-red);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(244, 63, 94, 0.2);
 }
 
 .movement-neutral {
   background: var(--bg-card-secondary);
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .movement-new {
@@ -915,7 +963,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 2px;
 }
 
@@ -924,21 +972,21 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-/* STICKY "MY JOURNEY" CARD (Sidebar) */
+/* STICKY "MY JOURNEY" CARD (Sidebar) — Key Differentiator with 5% Accent Tint */
 .journey-sidebar {
   position: sticky;
-  top: 86px;
+  top: 76px;
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
 .journey-card {
-  background: var(--bg-card);
-  border: 2px solid var(--eyfi-brand-light);
+  background: linear-gradient(180deg, #FFF9F5 0%, #FFFFFF 100%);
+  border: 1.5px solid var(--eyfi-brand-light);
   border-radius: var(--radius-xl);
   padding: 24px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-journey);
   position: relative;
   overflow: hidden;
 }
@@ -949,8 +997,8 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, #FF4522 0%, #FFB703 100%);
+  height: 5px;
+  background: linear-gradient(90deg, #F97316 0%, #FBBF24 100%);
 }
 
 .journey-header {
@@ -1008,16 +1056,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .journey-stat-box {
-  background: var(--bg-card-secondary);
+  background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 12px 14px;
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-box-label {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-transform: uppercase;
   margin-bottom: 4px;
 }
@@ -1036,8 +1085,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Milestone Progress Block */
 .milestone-progress-card {
-  background: #FFFDF8;
-  border: 1px dashed var(--eyfi-gold-dark);
+  background: #FFFFFF;
+  border: 1px dashed #F59E0B;
   border-radius: var(--radius-md);
   padding: 16px;
   margin-bottom: 20px;
@@ -1080,7 +1129,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #FFB703 0%, #FF4522 100%);
+  background: linear-gradient(90deg, #F59E0B 0%, #F97316 100%);
   border-radius: var(--radius-full);
   transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -1118,12 +1167,12 @@ h1, h2, h3, h4, h5, h6 {
 .journey-action-btn:hover {
   background: var(--eyfi-brand-hover);
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(255, 69, 34, 0.35);
+  box-shadow: 0 10px 24px rgba(249, 115, 22, 0.3);
 }
 
 .journey-secondary-btn {
   width: 100%;
-  background: var(--bg-card);
+  background: #FFFFFF;
   border: 1.5px solid var(--border-light);
   color: var(--text-primary);
   font-family: var(--font-sans);
@@ -1141,7 +1190,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .journey-secondary-btn:hover {
   background: var(--bg-card-secondary);
-  border-color: var(--text-secondary);
+  border-color: var(--border-strong);
 }
 
 /* Nearby Competitors Card */
@@ -1236,8 +1285,8 @@ h1, h2, h3, h4, h5, h6 {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(17, 19, 23, 0.6);
-  backdrop-filter: blur(6px);
+  background: rgba(23, 23, 23, 0.5);
+  backdrop-filter: blur(4px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -1283,7 +1332,7 @@ h1, h2, h3, h4, h5, h6 {
 .modal-close-btn {
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 4px;
   border-radius: 50%;
@@ -1324,13 +1373,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .milestone-timeline-item.unlocked {
   background: #FFFDF8;
-  border-color: #FBBF24;
+  border-color: #FDE68A;
 }
 
 .milestone-timeline-item.current-target {
   background: #FFF7ED;
   border-color: var(--eyfi-brand);
-  box-shadow: 0 4px 14px rgba(255, 69, 34, 0.15);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.15);
 }
 
 .milestone-timeline-item.locked {
@@ -1355,7 +1404,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .milestone-timeline-item.current-target .milestone-timeline-icon {
-  background: #FFE2DB;
+  background: #FFEDD5;
 }
 
 .milestone-timeline-content {
@@ -1491,7 +1540,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--border-light);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.85rem;
 }
 

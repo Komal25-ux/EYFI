@@ -34,12 +34,14 @@ export default function TopPodium({ topParticipants = [], onSelectParticipant, t
             onClick={() => onSelectParticipant(second)}
             title="Click to view hustle details"
           >
-            <div className="podium-badge-icon badge-silver">🥈</div>
+            {/* Large centered medal emoji above avatar */}
+            <div className="podium-medal-emoji">🥈</div>
+            
             <div className="podium-avatar-wrapper">
               <img src={second.avatar} alt={second.name} className="podium-avatar" />
               {second.streak > 0 && (
                 <div className="podium-streak-pill">
-                  <Flame size={12} color="#FFB703" /> {second.streak}d
+                  <Flame size={12} color="#F97316" /> {second.streak}d
                 </div>
               )}
             </div>
@@ -57,21 +59,23 @@ export default function TopPodium({ topParticipants = [], onSelectParticipant, t
             onClick={() => onSelectParticipant(first)}
             title="Click to view hustle details"
           >
-            <div className="podium-badge-icon badge-gold">🥇</div>
+            {/* Large centered medal emoji above avatar */}
+            <div className="podium-medal-emoji gold">🥇</div>
+            
             <div className="podium-avatar-wrapper">
               <img src={first.avatar} alt={first.name} className="podium-avatar" />
               {first.streak > 0 && (
                 <div className="podium-streak-pill">
-                  <Flame size={12} color="#FFB703" /> {first.streak}d
+                  <Flame size={12} color="#F97316" /> {first.streak}d
                 </div>
               )}
             </div>
             <h3 className="podium-name">
-              {first.name} <Crown size={16} color="#D97706" />
+              {first.name} <Crown size={17} color="#D97706" />
             </h3>
             <p className="podium-college">{first.college}</p>
             <div className="podium-income">{formatINR(getIncome(first))}</div>
-            <span className="podium-category-tag" style={{ background: '#FEF3C7', color: '#92400E', borderColor: '#FDE68A' }}>
+            <span className="podium-category-tag primary">
               {first.category}
             </span>
           </div>
@@ -84,12 +88,14 @@ export default function TopPodium({ topParticipants = [], onSelectParticipant, t
             onClick={() => onSelectParticipant(third)}
             title="Click to view hustle details"
           >
-            <div className="podium-badge-icon badge-bronze">🥉</div>
+            {/* Large centered medal emoji above avatar */}
+            <div className="podium-medal-emoji">🥉</div>
+            
             <div className="podium-avatar-wrapper">
               <img src={third.avatar} alt={third.name} className="podium-avatar" />
               {third.streak > 0 && (
                 <div className="podium-streak-pill">
-                  <Flame size={12} color="#FFB703" /> {third.streak}d
+                  <Flame size={12} color="#F97316" /> {third.streak}d
                 </div>
               )}
             </div>
