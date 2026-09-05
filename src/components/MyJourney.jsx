@@ -18,7 +18,7 @@ export default function MyJourney({
   const progressInfo = getMilestoneProgress(currentIncome);
   const { currentMilestone, nextMilestone, amountRemaining, progressPercent } = progressInfo;
 
-  const scopeLabel = scope === 'my_college' ? `IN ${currentUser.college.split(' ')[0].toUpperCase()}` : 'IN INDIA';
+  const scopeLabel = scope === 'my_college' ? 'IN DELHI' : 'IN INDIA';
 
   return (
     <aside className="journey-sidebar">

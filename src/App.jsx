@@ -92,11 +92,12 @@ export default function App() {
   // 6. Filtered List based on Scope, Category, and Search
   const filteredParticipants = useMemo(() => {
     return allProcessedParticipants.filter((p) => {
-      // Scope Filter: My College
+      // Scope Filter: My State (Delhi)
       if (scope === 'my_college') {
         const pCollege = (p.college || '').toLowerCase();
-        const userCollege = (currentProfile.college || '').toLowerCase();
-        if (!pCollege.includes(userCollege.split(' ')[0]) && !userCollege.includes(pCollege.split(' ')[0])) {
+        const pCity = (p.city || '').toLowerCase();
+        const isDelhi = pCity.includes('delhi') || pCollege.includes('delhi') || pCollege.includes('dtu') || pCollege.includes('nsut') || pCollege.includes('srcc');
+        if (!isDelhi) {
           return false;
         }
       }

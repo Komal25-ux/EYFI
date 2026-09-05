@@ -29,7 +29,7 @@ export default function FilterControls({
             onClick={() => onScopeChange('my_college')}
           >
             <Building2 size={15} />
-            <span>MY COLLEGE ({userCollege.split(' ')[0]})</span>
+            <span>MY STATE(Delhi)</span>
           </button>
         </div>
 
